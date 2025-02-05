@@ -57,8 +57,16 @@ To run this project locally, follow these steps:
 ![Screenshot](./public//screenshot1.png)
 
 ### Pricing page
+![Screenshot](./public//screenshot2.png)
+### Product page
+![Screenshot](./public//screenshot3.png)
+### Login page
+![Screenshot](./public//screenshot4.png)
+### Cities visited page
+![Screenshot](./public//screenshot5.png)
+### Countries visited page
+![Screenshot](./public//screenshot6.png)
 
-(image placeholders)
 
 ## 🛠️ Troubleshooting
 
