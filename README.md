@@ -12,7 +12,7 @@
 - Save visited countries and cities
 - View travel history
 
-## 📦 Installation & Setup
+## 💪 Installation & Setup
 
 To run this project locally, follow these steps:
 
@@ -37,19 +37,30 @@ To run this project locally, follow these steps:
 
 ## 🚀 Tech Stack
 
-- **Frontend**: React, Leaflet.js (for maps), CSS3
+- **Frontend**: React, React Router Dom, Leaflet.js (for maps), CSS3
 - **Data Storage**: data.json file to store visited countries and cities
 - **Deployment**: Vercel
 
-## 📤 Deployment
+## 🛠️ How It Works
 
-This project is deployed using **Vercel**. To redeploy, push changes to the main branch or use:
+### 🌍 App Features
+- Displays pins on the map where you have traveled.
+- Lists visited places with a button to center the map on your current location.
+- Clicking on the map centers the view and opens a modal to add city details.
+- After adding a city, it is listed among all visited locations.
+- Allows deletion of visited cities.
+- Clicking a city opens details and provides a link to its Wikipedia page.
+- View all visited countries in a dedicated section.
 
-```sh
-vercel --prod
-```
+## 📺 Screenshots
+### Landing page
+![Screenshot](./screenshot1.png)
 
-## ⚠️ Troubleshooting
+### Pricing page
+
+(image placeholders)
+
+## 🛠️ Troubleshooting
 
 If you encounter issues during build or deployment:
 
@@ -57,13 +68,26 @@ If you encounter issues during build or deployment:
 - Verify `package.json` dependencies.
 - Run `npm run build` locally before deploying.
 
-## 📚 License
+## 📄 Deployment
 
-This project is licensed under the MIT License.
+This project is deployed using **Vercel**. To redeploy, push changes to the main branch or use:
+
+```sh
+vercel --prod
+```
+
+## 🔗 You may also like...
+- **Tasty Trail** - A food ordering app
+- **The Wild Oasis** - A hotel service app
+- **React Quiz** - A React-based quiz app
 
 ## 📞 Contact
 
 For support or inquiries, reach out via [LinkedIn](https://www.linkedin.com/in/ishwortimalsina) or open an issue in the repository.
+
+## 📚 License
+
+This project is licensed under the MIT License.
 
 ---
 
