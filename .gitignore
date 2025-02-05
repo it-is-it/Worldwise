@@ -10,6 +10,7 @@ dist/
 build/
 .out/
 .next/
+.env
 
 # Logs
 logs/
