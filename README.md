@@ -44,6 +44,7 @@ To run this project locally, follow these steps:
 ## 🛠️ How It Works
 
 ### 🌍 App Features
+
 - Displays pins on the map where you have traveled.
 - Lists visited places with a button to center the map on your current location.
 - Clicking on the map centers the view and opens a modal to add city details.
@@ -53,20 +54,30 @@ To run this project locally, follow these steps:
 - View all visited countries in a dedicated section.
 
 ## 📺 Screenshots
+
 ### Landing page
+
 ![Screenshot](./public//screenshot1.png)
 
 ### Pricing page
-![Screenshot](./public//screenshot2.png)
-### Product page
-![Screenshot](./public//screenshot3.png)
-### Login page
-![Screenshot](./public//screenshot4.png)
-### Cities visited page
-![Screenshot](./public//screenshot5.png)
-### Countries visited page
-![Screenshot](./public//screenshot6.png)
 
+![Screenshot](./public//screenshot2.png)
+
+### Product page
+
+![Screenshot](./public//screenshot3.png)
+
+### Login page
+
+![Screenshot](./public//screenshot4.png)
+
+### Cities visited page
+
+![Screenshot](./public//screenshot5.png)
+
+### Countries visited page
+
+![Screenshot](./public//screenshot6.png)
 
 ## 🛠️ Troubleshooting
 
@@ -85,6 +96,7 @@ vercel --prod
 ```
 
 ## 🔗 You may also like...
+
 - **Tasty Trail** - A food ordering app
 - **The Wild Oasis** - A hotel service app
 - **React Quiz** - A React-based quiz app
