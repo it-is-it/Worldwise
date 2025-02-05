@@ -35,7 +35,8 @@
 
 - **Frontend**: React, Leaflet.js (for maps), CSS3
 
-## 📜 License
+
+## 📚 License
 
 This project is licensed under the MIT License.
 
