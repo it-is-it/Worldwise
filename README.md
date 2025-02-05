@@ -34,7 +34,7 @@
 ## 🔧 Tech Stack
 
 - **Frontend**: React, Leaflet.js (for maps), CSS3
-
+- **Data Storage**: data.json file to store visited countries and cities
 
 ## 📚 License
 
@@ -42,5 +42,4 @@ This project is licensed under the MIT License.
 
 ---
 
-💡 *Explore the world, track your journeys, and make every trip memorable with WorldWise!*
-
+💡 _Explore the world, track your journeys, and make every trip memorable with WorldWise!_
