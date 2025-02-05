@@ -54,7 +54,7 @@ To run this project locally, follow these steps:
 
 ## 📺 Screenshots
 ### Landing page
-![Screenshot](./screenshot1.png)
+![Screenshot](./public//screenshot1.png)
 
 ### Pricing page
 
