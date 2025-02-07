@@ -1,35 +1,36 @@
-import { useNavigate } from 'react-router-dom';
-import styles from './Map.module.css';
+import { useNavigate, useSearchParams } from "react-router-dom";
 import {
   MapContainer,
   TileLayer,
   Marker,
   Popup,
   useMap,
-  useMapEvent,
-} from 'react-leaflet';
-import { useState, useEffect } from 'react';
-import { useCities } from '../contexts/CitiesContext';
-import { useGeolocation } from '../hooks/useGeolocation';
-import Button from './Button';
-import { useUrlPosition } from '../hooks/useUrlPosition';
+  useMapEvents,
+} from "react-leaflet";
+
+import styles from "./Map.module.css";
+import { useEffect, useState } from "react";
+import { useCities } from "../contexts/CitiesContext";
+import { useGeolocation } from "../hooks/useGeolocation";
+import { useUrlPosition } from "../hooks/useUrlPosition";
+import Button from "./Button";
 
 function Map() {
   const { cities } = useCities();
-  const [mapPosition, setMapPosition] = useState([27.6653, 85.2715]);
+  const [mapPosition, setMapPosition] = useState([40, 0]);
   const {
-    getPosition,
-    position: geolocationPosition,
     isLoading: isLoadingPosition,
+    position: geolocationPosition,
+    getPosition,
   } = useGeolocation();
-
   const [mapLat, mapLng] = useUrlPosition();
 
-  useEffect(() => {
-    if (!isNaN(mapLat) && !isNaN(mapLng)) {
-      setMapPosition([mapLat, mapLng]);
-    }
-  }, [mapLat, mapLng]);
+  useEffect(
+    function () {
+      if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);
+    },
+    [mapLat, mapLng]
+  );
 
   useEffect(
     function () {
@@ -39,61 +40,36 @@ function Map() {
     [geolocationPosition]
   );
 
-  if (!cities || cities.length === 0) {
-    return <div>No cities to display</div>;
-  }
-
   return (
     <div className={styles.mapContainer}>
       {!geolocationPosition && (
         <Button type="position" onClick={getPosition}>
-          {isLoadingPosition ? 'Loading...' : 'Use your position'}
+          {isLoadingPosition ? "Loading..." : "Use your position"}
         </Button>
       )}
+
       <MapContainer
         center={mapPosition}
         zoom={6}
-        scrollWheelZoom
+        scrollWheelZoom={true}
         className={styles.map}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
         />
-        {cities.map((city) => {
-          const position = city.position;
+        {cities.map((city) => (
+          <Marker
+            position={[city.position.lat, city.position.lng]}
+            key={city.id}
+          >
+            <Popup>
+              <span>{city.emoji}</span> <span>{city.cityName}</span>
+            </Popup>
+          </Marker>
+        ))}
 
-          // Debug log to check city and position data
-          if (!position) {
-            console.warn(`City ${city.cityName} has no position data`);
-            return null; // Skip this city if no position data is available
-          }
-
-          const { lat, lng } = position;
-          if (isNaN(lat) || isNaN(lng)) {
-            console.warn(`City ${city.cityName} has invalid position data:`, position);
-            return null; // Skip this city if position data is invalid
-          }
-
-          return (
-            <Marker position={[lat, lng]} key={city.id}>
-              <Popup>
-                <div>
-                  <span role="img" aria-label={`Flag of ${city.cityName}`}>
-                    {city.emoji}
-                  </span>{' '}
-                  <strong>{city.cityName}</strong>
-                  <p>{city.notes}</p>
-                </div>
-              </Popup>
-            </Marker>
-          );
-        })}
-        <ChangeCenter
-          position={
-            !isNaN(mapLat) && !isNaN(mapLng) ? [mapLat, mapLng] : mapPosition
-          }
-        />
+        <ChangeCenter position={mapPosition} />
         <DetectClick />
       </MapContainer>
     </div>
@@ -102,19 +78,14 @@ function Map() {
 
 function ChangeCenter({ position }) {
   const map = useMap();
-
-  useEffect(() => {
-    if (position) {
-      map.setView(position);
-    }
-  }, [position, map]);
-
+  map.setView(position);
   return null;
 }
 
 function DetectClick() {
   const navigate = useNavigate();
-  useMapEvent({
+
+  useMapEvents({
     click: (e) => navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`),
   });
 }
